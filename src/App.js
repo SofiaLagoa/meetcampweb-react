@@ -1,18 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
 import Button from './components/Button';
 
 function App() {
+
+  const handleClick = ()=> {
+    alert("Gaurdado exitoso")
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-         Te damos la bienvenida
-        </p>
-        <Button text="Guardar" onClick={()=> alert("Gaurdado exitoso")}/>
+        <p>Te damos la bienvenida</p>
+        <Button text="Guardar" onClick={handleClick}/>
         <Button text="Cancelar" onClick={()=> alert("Su operacion fue cancelada")}/>
-      </header>
     </div>
   );
 }
