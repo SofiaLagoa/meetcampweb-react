@@ -11,7 +11,7 @@ function Home (){
     return(
         <>
         <Button onClick={() => onClickButton('/game')} text='MetCamp Quiz' />
-        <Button onClick={() => onClickButton('/abuot')} text='About Me' />
+        <Button onClick={() => onClickButton('/about')} text='About Me' />
         </>
      )
 }
