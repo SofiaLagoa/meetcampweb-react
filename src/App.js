@@ -10,7 +10,8 @@ function App() {
         <p>
          Te damos la bienvenida
         </p>
-        <Button text="Soy un boton"/>
+        <Button text="Guardar" onClick={()=> alert("Gaurdado exitoso")}/>
+        <Button text="Cancelar" onClick={()=> alert("Su operacion fue cancelada")}/>
       </header>
     </div>
   );
