@@ -1,18 +1,22 @@
 import './App.css';
-import Button from './components/Button';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/home';
+import Game from './pages/game';
+import About from './pages/about'
 
 function App() {
 
-  const handleClick = ()=> {
-    alert("Gaurdado exitoso")
-  }
-
   return (
-    <div className="App">
-        <p>Te damos la bienvenida</p>
-        <Button text="Guardar" onClick={handleClick}/>
-        <Button text="Cancelar" onClick={()=> alert("Su operacion fue cancelada")}/>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        {/* home */}
+        <Route path='/' element={<Home />} />
+        {/* game */}
+        <Route path='/game' element={<Game />} />
+        {/* about */}
+        <Route path='/about' element={<About />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
