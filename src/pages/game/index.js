@@ -23,19 +23,19 @@ function Game() {
                 <nav className="breadcrumb" aria-label="breadcrumbs">
                     <ul>
                         <li>
-                            <Link to='/'>Inicio</Link>
+                            <Link to='/'>Home</Link>
                         </li>
                         <li className='is-active'>
-                            <Link to='/game'>Juego</Link>
+                            <Link to='/game'>Game</Link>
                         </li>
                     </ul>
                 </nav>
-                <h1>MetCamp Web Quiz</h1>
-
+                <h1><strong>Harry Potter Quiz</strong></h1>
+                <br />
                 {
                     loading && (
                         <div>
-                            <p>Cargando...</p>
+                            <p>Loading...</p>
                         </div>
                     )
                 }
@@ -43,9 +43,13 @@ function Game() {
                     !loading && (
                         <form>
                             {
-                              questions.map((itemQuestion) =>{
-                                return <QuestionsCards currentQuestion={itemQuestion} />
-                              })
+                                questions.map((itemQuestion) => {
+                                    return (
+                                        <div key={itemQuestion.id} style={{marginBottom:"15px"}}>
+                                            <QuestionsCards currentQuestion={itemQuestion} />
+                                        </div>
+                                    )
+                                })
                             }
                         </form>
                     )
