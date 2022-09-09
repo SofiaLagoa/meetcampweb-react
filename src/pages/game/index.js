@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import QuestionsCards from '../../components/QuestionsCard';
+import Button from '../../components/Button'
 
 const API_URL = "https://62bb6e36573ca8f83298fbef.mockapi.io/metcampweb22/v1/questions/harry-potter";
 
@@ -64,6 +65,9 @@ function Game() {
                         </form>
                     )
                 }
+                <div className='level-right'>
+                    <Button onclick={() => console.log('Hola')} text="Validar"></Button>
+                </div>
             </section>
         </div>
 
