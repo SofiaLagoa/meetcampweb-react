@@ -8,6 +8,10 @@ function Game() {
 
     const [loading, setLoading] = useState(true);
     const [questions, setQuestions] = useState([]);
+    //preguntas seleccionadas
+    const [selectedAnswers, setSelectedAnswers] = useState([]);
+    //respuestas
+    const [result, setResult] =useState(0);
 
     useEffect(() => {
         fetch(API_URL)
@@ -46,7 +50,13 @@ function Game() {
                                 questions.map((itemQuestion) => {
                                     return (
                                         <div key={itemQuestion.id} style={{marginBottom:"15px"}}>
-                                            <QuestionsCards currentQuestion={itemQuestion} />
+                                            <QuestionsCards 
+                                            key={itemQuestion.id}
+                                            currentQuestion={itemQuestion} 
+                                            selectedAnswers={selectedAnswers}
+                                            //guardar las respuestas seleccionadas
+                                            setSelectedAnswers={setSelectedAnswers}
+                                            />
                                         </div>
                                     )
                                 })
