@@ -7,7 +7,20 @@ function QuestionsCards({ currentQuestion, selectedAnswers, setSelectedAnswers, 
     function seleccionarRespuestas(id, valorOpcion) {
         //del array de respuestas filtrame las que tengan un id distinta a la que estoy seleccionando
         const otrasRespuestas = selectedAnswers.filter((respuesta) => respuesta.id !== id)
-        setSelectedAnswers([...otrasRespuestas, {id, valorOpcion} ]);
+        setSelectedAnswers([...otrasRespuestas, { id, valorOpcion }]);
+    }
+
+    //validar respuesta, colocar color respuesta correcta/incorrecta
+    function mostrarColores(valor) {
+        let valorClase = "";
+        if (mostrarResultado) {
+            if (valor === true) {
+                valorClase = "has-text-primary"
+            } else {
+                valorClase = "has-text-danger"
+            }
+        }
+        return valorClase
     }
 
     return (
@@ -19,23 +32,19 @@ function QuestionsCards({ currentQuestion, selectedAnswers, setSelectedAnswers, 
             {
                 currentQuestion.answers.map((opcion) => (
                     //funcion que me diga que pregunta se selecciono
-                    <div key={opcion.id} 
-                    onChange={() => seleccionarRespuestas(currentQuestion.id, opcion.is_correct)}
+                    <div key={opcion.id}
+                        onChange={() => seleccionarRespuestas(currentQuestion.id, opcion.is_correct)}
                     >
                         <input type="radio"
-                        //el input se identifica con un contenedor y no con cada input
-                        //pisa el valor de cada radio, porque no puede tener dos inputs al mismo tiempo seleccionados
+                            //el input se identifica con un contenedor y no con cada input
+                            //pisa el valor de cada radio, porque no puede tener dos inputs al mismo tiempo seleccionados
                             id={`${currentQuestion.id}`}
                             name={currentQuestion.id}
                             value={opcion.answer}>
                         </input>
                         <label htmlFor={`${currentQuestion.id}`}
-                        //validacion de respuestas correctas mediante un condicional en la clase
-                        className={
-                            mostrarResultado ?
-                            opcion.is_correct ? "has-text-primary" : "has-text-danger"
-                            : ""
-                        }
+                            //validacion de respuestas correctas mediante un condicional en la clase
+                            className={mostrarColores(opcion.is_correct)}
                         >&nbsp;{opcion.answer}</label>
                     </div>
                 ))

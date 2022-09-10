@@ -83,8 +83,7 @@ function Game() {
                     <Button
                         disabled={selectedAnswers.length < questions.length}
                         onClick={() => calcularResultado()} 
-                        text="Validar">
-                    </Button>
+                        text="Validar" />
                 </div>
             </section>
         </div>
