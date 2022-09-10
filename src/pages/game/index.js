@@ -18,7 +18,7 @@ function Game() {
     function calcularResultado() {
         console.log('boton validar')
         const respuestasCorrectas = selectedAnswers.filter((respuestas) => 
-        respuestas .valorOpcion === true );
+        respuestas.valorOpcion === true );
         console.log(respuestasCorrectas.length);
         setResult(respuestasCorrectas.length);
         setMostrarResultado(true);
@@ -81,9 +81,13 @@ function Game() {
                         <p>{`Respuestas correctas: ${result}`}/{`${questions.length}`}</p>
                     }
                     <Button
-                        disabled={selectedAnswers.length < questions.length}
+                        disabled={selectedAnswers.length !== questions.length || mostrarResultado}
                         onClick={() => calcularResultado()} 
                         text="Validar" />
+                    <Button 
+                    disabled={true}
+                    onClick={() => console.log('Reseteo de las respuestas')} 
+                    text="Reseteo"/>
                 </div>
             </section>
         </div>
