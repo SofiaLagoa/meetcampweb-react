@@ -4,10 +4,10 @@ function QuestionsCards({ currentQuestion, selectedAnswers, setSelectedAnswers }
 
     //identificador de que pregunta es, cuando se selecciona una respuesta
     //se asocia la pregunta con la respuesta
-    function selectedAnswers(id, valorOpcion) {
+    function seleccionarRespuestas(id, valorOpcion) {
         //del array de respuestas filtrame las que tengan un id distinta a la que estoy seleccionando
-        const othersAnswers = selectedAnswers.filter((answer) => answer.id !== id)
-        setSelectedAnswers([...othersAnswers, {id, valorOpcion} ]);
+        const otrasRespuestas = selectedAnswers.filter((respuesta) => respuesta.id !== id)
+        setSelectedAnswers([...otrasRespuestas, {id, valorOpcion} ]);
     }
 
     return (
@@ -20,7 +20,7 @@ function QuestionsCards({ currentQuestion, selectedAnswers, setSelectedAnswers }
                 currentQuestion.answers.map((opcion) => (
                     //funcion que me diga que pregunta se selecciono
                     <div key={opcion.id} 
-                    onChange={() => selectedAnswers(currentQuestion.id, opcion.is_correct)}
+                    onChange={() => seleccionarRespuestas(currentQuestion.id, opcion.is_correct)}
                     >
                         <input type="radio"
                         //el input se identifica con un contenedor y no con cada input

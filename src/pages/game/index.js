@@ -12,7 +12,14 @@ function Game() {
     //preguntas seleccionadas
     const [selectedAnswers, setSelectedAnswers] = useState([]);
     //respuestas
-    const [result, setResult] =useState(0);
+    const [result, setResult] = useState(0);
+
+    function calcularResultado() {
+        console.log('boton validar')
+        const respuestasCorrectas = selectedAnswers.filter((respuestas) => 
+        respuestas .valorOpcion === true )
+        console.log(respuestasCorrectas)
+    }
 
     useEffect(() => {
         fetch(API_URL)
@@ -50,13 +57,13 @@ function Game() {
                             {
                                 questions.map((itemQuestion) => {
                                     return (
-                                        <div key={itemQuestion.id} style={{marginBottom:"15px"}}>
-                                            <QuestionsCards 
-                                            key={itemQuestion.id}
-                                            currentQuestion={itemQuestion} 
-                                            selectedAnswers={selectedAnswers}
-                                            //guardar las respuestas seleccionadas
-                                            setSelectedAnswers={setSelectedAnswers}
+                                        <div key={itemQuestion.id} style={{ marginBottom: "15px" }}>
+                                            <QuestionsCards
+                                                key={itemQuestion.id}
+                                                currentQuestion={itemQuestion}
+                                                selectedAnswers={selectedAnswers}
+                                                //guardar las respuestas seleccionadas
+                                                setSelectedAnswers={setSelectedAnswers}
                                             />
                                         </div>
                                     )
@@ -66,7 +73,11 @@ function Game() {
                     )
                 }
                 <div className='level-right'>
-                    <Button onclick={() => console.log('Hola')} text="Validar"></Button>
+                    <Button
+                        disabled={selectedAnswers.length < questions.length}
+                        onClick={() => calcularResultado()} 
+                        text="Validar">
+                    </Button>
                 </div>
             </section>
         </div>
