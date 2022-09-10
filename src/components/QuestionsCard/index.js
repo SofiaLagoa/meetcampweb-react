@@ -1,6 +1,6 @@
 import "./style.css";
 
-function QuestionsCards({ currentQuestion, selectedAnswers, setSelectedAnswers }) {
+function QuestionsCards({ currentQuestion, selectedAnswers, setSelectedAnswers, mostrarResultado }) {
 
     //identificador de que pregunta es, cuando se selecciona una respuesta
     //se asocia la pregunta con la respuesta
@@ -29,7 +29,14 @@ function QuestionsCards({ currentQuestion, selectedAnswers, setSelectedAnswers }
                             name={currentQuestion.id}
                             value={opcion.answer}>
                         </input>
-                        <label htmlFor={`${currentQuestion.id}`}> {opcion.answer}</label>
+                        <label htmlFor={`${currentQuestion.id}`}
+                        //validacion de respuestas correctas mediante un condicional en la clase
+                        className={
+                            mostrarResultado ?
+                            opcion.is_correct ? "has-text-primary" : "has-text-danger"
+                            : ""
+                        }
+                        >&nbsp;{opcion.answer}</label>
                     </div>
                 ))
             }

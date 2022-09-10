@@ -13,12 +13,15 @@ function Game() {
     const [selectedAnswers, setSelectedAnswers] = useState([]);
     //respuestas
     const [result, setResult] = useState(0);
+    const [mostrarResultado, setMostrarResultado] = useState(false);
 
     function calcularResultado() {
         console.log('boton validar')
         const respuestasCorrectas = selectedAnswers.filter((respuestas) => 
-        respuestas .valorOpcion === true )
-        console.log(respuestasCorrectas)
+        respuestas .valorOpcion === true );
+        console.log(respuestasCorrectas.length);
+        setResult(respuestasCorrectas.length);
+        setMostrarResultado(true);
     }
 
     useEffect(() => {
@@ -64,6 +67,7 @@ function Game() {
                                                 selectedAnswers={selectedAnswers}
                                                 //guardar las respuestas seleccionadas
                                                 setSelectedAnswers={setSelectedAnswers}
+                                                mostrarResultado={mostrarResultado}
                                             />
                                         </div>
                                     )
@@ -73,6 +77,9 @@ function Game() {
                     )
                 }
                 <div className='level-right'>
+                    { mostrarResultado &&
+                        <p>{`Respuestas correctas: ${result}`}/{`${questions.length}`}</p>
+                    }
                     <Button
                         disabled={selectedAnswers.length < questions.length}
                         onClick={() => calcularResultado()} 
